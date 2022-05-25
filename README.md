@@ -1,2 +1,0 @@
-# Proiect-PA
-MISTO
