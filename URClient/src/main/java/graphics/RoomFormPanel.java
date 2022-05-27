@@ -1,6 +1,5 @@
 package graphics;
-
-import model.Event;
+import example.ClientSocket;
 import model.Room;
 
 import javax.swing.*;
@@ -121,6 +120,8 @@ public class RoomFormPanel extends JPanel {
 
     private void submitForm(ActionEvent event)
     {
+        ClientSocket.getInstance().getOutputStream().
+
         CardLayout cardLayout = (CardLayout) frame.getContainer().getLayout();
         cardLayout.show(frame.getContainer(), "main menu");
     }
