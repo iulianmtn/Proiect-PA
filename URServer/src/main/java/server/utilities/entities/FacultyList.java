@@ -1,4 +1,4 @@
-package server.utilities;
+package server.utilities.entities;
 
 import java.util.ArrayList;
 import java.util.List;
