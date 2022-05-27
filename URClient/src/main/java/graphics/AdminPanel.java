@@ -11,6 +11,8 @@ public class AdminPanel extends JPanel {
     private JTextField faculty;
     private JButton addButton;
 
+    private String facultyName;
+
     public AdminPanel(MainFrame frame)
     {
         this.frame = frame;
@@ -44,7 +46,14 @@ public class AdminPanel extends JPanel {
 
     private void buttonPressed(ActionEvent event)
     {
+        //preluam in facultyName valoare din textField
+        facultyName = faculty.getText();
+
         CardLayout cardLayout = (CardLayout) frame.getContainer().getLayout();
         cardLayout.show(frame.getContainer(), "event form");
+    }
+
+    public String getFacultyName() {
+        return facultyName;
     }
 }
