@@ -1,8 +1,8 @@
 package model;
 
 public class Room {
-    String name;
-    int capacity;
+    private String name;
+    private int capacity;
 
     public Room(String name, int capacity) {
         this.name = name;
