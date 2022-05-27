@@ -20,6 +20,7 @@ public class MainFrame extends JFrame {
     public void init()
     {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(1200,800);
 
         container = getContentPane();
         container.setLayout(new CardLayout(40,30));
