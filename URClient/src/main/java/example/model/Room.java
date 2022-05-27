@@ -1,4 +1,4 @@
-package model;
+package example.model;
 
 public class Room {
     private String name;

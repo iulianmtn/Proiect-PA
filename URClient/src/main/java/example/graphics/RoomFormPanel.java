@@ -1,7 +1,6 @@
-package graphics;
+package example.graphics;
 
-import model.Event;
-import model.Room;
+import example.model.Room;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

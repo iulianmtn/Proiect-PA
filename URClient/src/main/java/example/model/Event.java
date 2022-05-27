@@ -1,4 +1,4 @@
-package model;
+package example.model;
 
 public class Event {
     private String name;

@@ -1,6 +1,7 @@
 package utilities;
+import example.model.Event;
+import example.model.Room;
 import model.*;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;

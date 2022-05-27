@@ -1,16 +1,13 @@
-package graphics;
+package example.graphics;
 
 
-import model.Event;
+import example.model.Event;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.Inet4Address;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 

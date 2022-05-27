@@ -1,7 +1,7 @@
-import com.google.gson.Gson;
-import graphics.MainFrame;
-import model.Event;
-import model.Room;
+package example;
+
+import example.model.Event;
+import example.model.Room;
 import utilities.*;
 
 import java.util.ArrayList;

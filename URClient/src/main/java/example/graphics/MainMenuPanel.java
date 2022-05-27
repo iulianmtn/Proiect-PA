@@ -1,7 +1,6 @@
-package graphics;
+package example.graphics;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
