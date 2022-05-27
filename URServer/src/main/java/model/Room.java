@@ -1,4 +1,4 @@
-package model;
+package server.model;
 
 public class Room {
     private String name;
@@ -7,6 +7,14 @@ public class Room {
     public Room(String name, int capacity) {
         this.name = name;
         this.capacity = capacity;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "name='" + name + '\'' +
+                ", capacity=" + capacity +
+                '}';
     }
 
     public String getName() {

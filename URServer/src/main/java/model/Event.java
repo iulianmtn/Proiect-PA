@@ -1,4 +1,4 @@
-package model;
+package server.model;
 
 public class Event {
     private String name;
@@ -93,5 +93,20 @@ public class Event {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "name='" + name + '\'' +
+                ", start=" + start +
+                ", end=" + end +
+                ", size=" + size +
+                ", day='" + day + '\'' +
+                ", type='" + type + '\'' +
+                ", year='" + year + '\'' +
+                ", semian='" + semian + '\'' +
+                ", group='" + group + '\'' +
+                '}';
     }
 }
