@@ -5,26 +5,26 @@ import java.util.List;
 
 public class GroupList {
     private String instruction;
-    private List<Integer> groupList=new ArrayList<>();
+    private List<String> groupList=new ArrayList<>();
 
     public String getInstruction() {
         return instruction;
+    }
+
+    public GroupList( List<String> groupList) {
+        this.instruction = "getGroupList";
+        this.groupList = groupList;
     }
 
     public void setInstruction(String instruction) {
         this.instruction = instruction;
     }
 
-    public List<Integer> getGroupList() {
+    public List<String> getGroupList() {
         return groupList;
     }
 
-    public void setGroupList(List<Integer> groupList) {
-        this.groupList = groupList;
-    }
-
-    public GroupList( List<Integer> groupList) {
-        this.instruction = "getGroupList";
+    public void setGroupList(List<String> groupList) {
         this.groupList = groupList;
     }
 

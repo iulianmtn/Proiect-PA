@@ -24,9 +24,6 @@ public class JsonSerialAndDeserial {
         if(jasonFormat.contains("\"instruction\":\"getGroupList\""))
                 return  gson.fromJson(jasonFormat, GroupList.class);
             else
-        if(jasonFormat.contains("\"instruction\":\"getGroupList\""))
-                return gson.fromJson(jasonFormat,SemianList.class);
-            else
                 return null;
     }
 }

@@ -64,13 +64,13 @@ public class DBController {
     public static String getGroups(int idFaculty)
     {
         /////---->we will get all the groupt from the dataBase that have the id = idFaculty
-
+        ///---get distinct Semian An for the events and we get all the faculty members
         ///Now for test
-        List<Integer> groupList = new ArrayList<>();
-        groupList.add(1);
-        groupList.add(2);
-        groupList.add(3);
-        groupList.add(4);
+        List<String> groupList = new ArrayList<>();
+        groupList.add("B1");
+        groupList.add("B2");
+        groupList.add("B3");
+        groupList.add("B4");
 
         GroupList myGroupList=new GroupList(groupList);
         System.out.println(ANSI_PURPLE+myGroupList+ANSI_RESET);
@@ -78,5 +78,7 @@ public class DBController {
         System.out.println("----------");
         return JsonSerialAndDeserial.formatToJson(myGroupList);
     }
+
+
 
 }
