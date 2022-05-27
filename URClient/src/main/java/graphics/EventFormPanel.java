@@ -218,7 +218,7 @@ public class EventFormPanel extends JPanel implements ActionListener {
         String dayOfWeek = (String) day.getSelectedItem();
         String eventType = (String) type.getSelectedItem();
         String studyYear = (String) year.getSelectedItem();
-        String sem = (String) semian.getSelectedItem();
+        String sem = (Strinag) semian.getSelectedItem();
         String studyGroup = (String) group.getSelectedItem();
 
         Event event = new Event(name,start, end, sizeValue, dayOfWeek,eventType, studyYear, sem, studyGroup);
