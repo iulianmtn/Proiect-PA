@@ -71,7 +71,7 @@ public class DBController {
     public static String getGroups(int idFaculty)
     {
         /////---->we will get all the groupt from the dataBase that have the id = idFaculty
-        ///---get distinct Semian An for the events and we get all the faculty members
+        ///---get distinct Semian An grupa for the events and we get all the faculty members
         ///Now for test
         List<String> groupList = new ArrayList<>();
         groupList.add("1B1");

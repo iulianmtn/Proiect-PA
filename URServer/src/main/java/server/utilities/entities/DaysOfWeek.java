@@ -1,7 +1,7 @@
 package server.utilities.entities;
 
 public enum DaysOfWeek {
-    MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY;
+    MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY;
     public String getValue(){
         switch (this)
         {
@@ -11,7 +11,6 @@ public enum DaysOfWeek {
             case THURSDAY: return "Thursday";
             case FRIDAY: return "Friday";
             case SATURDAY: return "Saturday";
-            case SUNDAY: return "Sunday";
             default: return null;
         }
     }
