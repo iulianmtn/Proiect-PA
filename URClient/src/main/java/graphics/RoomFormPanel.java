@@ -1,12 +1,15 @@
 package graphics;
 
-import model.Event;
+import example.ClientSocket;
 import model.Room;
+import utilities.InsertFormat;
+import utilities.Utilities;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.ClientInfoStatus;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -121,6 +124,9 @@ public class RoomFormPanel extends JPanel {
 
     private void submitForm(ActionEvent event)
     {
+        InsertFormat insertObject = new InsertFormat("insert", frame.getAdminPanel().getFacultyName(), rooms, frame.getEventFormPanel().getEvents());
+        ClientSocket.getInstance().getOutputStream().println(Utilities.formatToJson(insertObject));
+
         CardLayout cardLayout = (CardLayout) frame.getContainer().getLayout();
         cardLayout.show(frame.getContainer(), "main menu");
     }

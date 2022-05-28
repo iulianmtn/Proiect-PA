@@ -258,6 +258,7 @@ public class EventFormPanel extends JPanel implements ActionListener {
     }
 
 
+
     // method actionPerformed()
     // to get the action performed
     // by the user and act accordingly
@@ -293,4 +294,8 @@ public class EventFormPanel extends JPanel implements ActionListener {
 //        }
 //
      }
+
+    public List<Event> getEvents() {
+        return events;
+    }
 }

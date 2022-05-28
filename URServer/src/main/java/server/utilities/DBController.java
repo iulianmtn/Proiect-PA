@@ -95,7 +95,7 @@ public class DBController {
         //////----making the selection
         //////
         OneEventSchedule eventSchedule1 = new OneEventSchedule("c1","Fisics", DaysOfWeek.SATURDAY,2,10,1,1,"B",LabOrCourse.COURSE);
-        OneEventSchedule eventSchedule2 = new OneEventSchedule("c2","Romanian", DaysOfWeek.SUNDAY,7,10,2,3,"A",LabOrCourse.COURSE);
+        OneEventSchedule eventSchedule2 = new OneEventSchedule("c2","Romanian", DaysOfWeek.MONDAY,7,10,2,3,"A",LabOrCourse.COURSE);
         List<OneEventSchedule> listScheduledEvents = new ArrayList<>();
         listScheduledEvents.add(eventSchedule1);
         listScheduledEvents.add(eventSchedule2);
@@ -121,7 +121,7 @@ public class DBController {
         ////---here we will make the interogation
         /////
         OneEventSchedule eventSchedule1 = new OneEventSchedule("c1","Fisics", DaysOfWeek.SATURDAY,2,10,2,3,"A",LabOrCourse.COURSE);
-        OneEventSchedule eventSchedule2 = new OneEventSchedule("c2","Romanian", DaysOfWeek.SUNDAY,7,10,2,3,"A",LabOrCourse.COURSE);
+        OneEventSchedule eventSchedule2 = new OneEventSchedule("c2","Romanian", DaysOfWeek.MONDAY,7,10,2,3,"A",LabOrCourse.COURSE);
         List<OneEventSchedule> listScheduledEvents = new ArrayList<>();
         listScheduledEvents.add(eventSchedule1);
         listScheduledEvents.add(eventSchedule2);

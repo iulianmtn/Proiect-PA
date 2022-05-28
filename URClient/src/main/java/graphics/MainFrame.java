@@ -44,4 +44,20 @@ public class MainFrame extends JFrame {
     public Container getContainer() {
         return container;
     }
+
+    public AdminPanel getAdminPanel() {
+        return adminPanel;
+    }
+
+    public StudentPanel getStudentPanel() {
+        return studentPanel;
+    }
+
+    public EventFormPanel getEventFormPanel() {
+        return eventFormPanel;
+    }
+
+    public RoomFormPanel getRoomFormPanel() {
+        return roomFormPanel;
+    }
 }
