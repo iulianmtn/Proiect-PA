@@ -2,18 +2,19 @@ package server.utilities;
 
 import server.model.Event;
 import server.model.Room;
+import server.utilities.entities.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static server.utilities.Colours.*;
+import static server.utilities.entities.Colours.*;
 
 /**
  * This class defines the interaction between the data base and the Server
  */
 public class DBController {
     private DBController(){}
-    ////aici ar trebuii sa am conexiunea la server
+    ////here we will need the connection to a DB
 
     /////-------------//////
     /**
@@ -61,22 +62,73 @@ public class DBController {
 
         return JsonSerialAndDeserial.formatToJson(listFaculties);
     }
+
+    /**
+     *
+     * @param idFaculty
+     * @return  returns a json object that contains all the groups of a faculty under de Format 1B1 1B2 2B3..etc
+     */
     public static String getGroups(int idFaculty)
     {
         /////---->we will get all the groupt from the dataBase that have the id = idFaculty
-        ///---get distinct Semian An for the events and we get all the faculty members
+        ///---get distinct Semian An grupa for the events and we get all the faculty members
         ///Now for test
         List<String> groupList = new ArrayList<>();
-        groupList.add("B1");
-        groupList.add("B2");
-        groupList.add("B3");
-        groupList.add("B4");
+        groupList.add("1B1");
+        groupList.add("1B2");
+        groupList.add("2B3");
+        groupList.add("2B4");
 
         GroupList myGroupList=new GroupList(groupList);
         System.out.println(ANSI_PURPLE+myGroupList+ANSI_RESET);
 
         System.out.println("----------");
         return JsonSerialAndDeserial.formatToJson(myGroupList);
+    }
+
+    /**
+     *  This function gives the schedule of the hole faculty
+     * @param idFaculty
+     * @return
+     */
+    public static String getFacultySchedule(int idFaculty){
+        //////----making the selection
+        //////
+        OneEventSchedule eventSchedule1 = new OneEventSchedule("c1","Fisics", DaysOfWeek.SATURDAY,2,10,1,1,"B",LabOrCourse.COURSE);
+        OneEventSchedule eventSchedule2 = new OneEventSchedule("c2","Romanian", DaysOfWeek.SUNDAY,7,10,2,3,"A",LabOrCourse.COURSE);
+        List<OneEventSchedule> listScheduledEvents = new ArrayList<>();
+        listScheduledEvents.add(eventSchedule1);
+        listScheduledEvents.add(eventSchedule2);
+        FacultySchedule facultySchedule = new FacultySchedule(listScheduledEvents);
+
+        System.out.println(ANSI_CYAN+"The schedule of the given faculty : "+ facultySchedule+ANSI_RESET);
+        System.out.println("------------");
+        return JsonSerialAndDeserial.formatToJson(facultySchedule);
+
+    }
+
+    /**
+     *  this function gives the schedule of a certain group of a faculty
+     * @param idFaculty
+     * @param group
+     * @param semian
+     * @param year
+     * @return
+     */
+
+    public static String getGroupSchedule(int idFaculty,int group,String semian,int year)
+    {
+        ////---here we will make the interogation
+        /////
+        OneEventSchedule eventSchedule1 = new OneEventSchedule("c1","Fisics", DaysOfWeek.SATURDAY,2,10,2,3,"A",LabOrCourse.COURSE);
+        OneEventSchedule eventSchedule2 = new OneEventSchedule("c2","Romanian", DaysOfWeek.SUNDAY,7,10,2,3,"A",LabOrCourse.COURSE);
+        List<OneEventSchedule> listScheduledEvents = new ArrayList<>();
+        listScheduledEvents.add(eventSchedule1);
+        listScheduledEvents.add(eventSchedule2);
+        GroupSchedule groupSchedule = new GroupSchedule(listScheduledEvents);
+        System.out.println(ANSI_GREEN+"The schedule of the given group : "+groupSchedule+ANSI_RESET);
+        System.out.println("------------");
+        return JsonSerialAndDeserial.formatToJson(groupSchedule);
     }
 
 

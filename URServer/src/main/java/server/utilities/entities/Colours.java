@@ -1,4 +1,4 @@
-package server.utilities;
+package server.utilities.entities;
 
 public class Colours {
     public static final String ANSI_RESET = "\u001B[0m";

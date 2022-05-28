@@ -1,4 +1,4 @@
-package server.utilities;
+package server.utilities.entities;
 
 import server.model.*;
 
