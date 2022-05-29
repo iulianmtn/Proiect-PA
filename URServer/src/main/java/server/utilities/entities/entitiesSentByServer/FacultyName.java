@@ -2,9 +2,19 @@ package server.utilities.entities.entitiesSentByServer;
 
 public class FacultyName {
     private String nume;
+    private int id;
 
-    public FacultyName(String nume) {
+    public FacultyName(String nume, int id) {
         this.nume = nume;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNume() {
@@ -19,6 +29,7 @@ public class FacultyName {
     public String toString() {
         return "FacultyName{" +
                 "nume='" + nume + '\'' +
+                ", id=" + id +
                 '}';
     }
 }

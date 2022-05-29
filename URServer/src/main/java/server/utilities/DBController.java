@@ -50,50 +50,31 @@ public class DBController {
     public static String getFaculties(){
         ///statement to get faculties from where I will get the json for example the following
 
-        String givenJson = "[{\"nume\":\"info\"},{\"nume\":\"mate\"}]";
+        String givenJson = "[{\"nume\":\"info\",\"id\":\"1\"},{\"nume\":\"mate\",\"id\":2}]";
 
         return givenJson;
     }
 
     public static String getGroups(int idFaculty)
     {
-        //statement to get the faculties
-       return null;
+        ////statement to get the groups of a faculty
+
+        String givenJson = "[{\"grupa\":\"1A2\"},{\"grupa\":\"1B1\"}]";
+
+        return givenJson;
     }
 
     public static String getFacultySchedule(int idFaculty){
         ////statement so we can get a schedule
-        List<ScheduledEvent> scheduledEventList = new ArrayList<>();
-        scheduledEventList.add(new ScheduledEvent("mate",8,10,30,"3B1","C1","curs"));
-        scheduledEventList.add(new ScheduledEvent("info",10,12,30,"2B2","C2","lab"));
-        ScheduledDay monday = new ScheduledDay("luni",scheduledEventList);
-        scheduledEventList.clear();
-        scheduledEventList.add(new ScheduledEvent("romana",10,12,30,"3B1","C2","lab"));
-        ScheduledDay tuesday = new ScheduledDay("marti",scheduledEventList);
-        List<ScheduledDay> schedule = new ArrayList<>();
-        schedule.add(monday);
-        schedule.add(tuesday);
-
-        String scheduledFaculty = transformer.toJson(schedule);
-        return scheduledFaculty;
+        String jsonFacultySchedule;
+        return null;
             }
 
 
     public static String getGroupSchedule(int idFaculty,int group,String semian,int year)
     { ////statement so we can get a schedule
-        List<ScheduledEvent> scheduledEventList = new ArrayList<>();
-        scheduledEventList.add(new ScheduledEvent("mate",8,10,30,"2B1","C1","curs"));
-        scheduledEventList.add(new ScheduledEvent("info",10,12,30,"2B1","C2","curs"));
-        ScheduledDay monday = new ScheduledDay("luni",scheduledEventList);
-        List<ScheduledEvent> scheduledEventList1=new ArrayList<>();
-        scheduledEventList1.add(new ScheduledEvent("romana",10,12,30,"2B1","P901","lab"));
-        ScheduledDay tuesday = new ScheduledDay("marti",scheduledEventList1);
-        List<ScheduledDay> schedule = new ArrayList<>();
-        schedule.add(monday);
-        schedule.add(tuesday);
-
-        String scheduledFaculty = transformer.toJson(schedule);
-        return scheduledFaculty;
+        String jsonGroupSchedule;
+        return null;
     }
 
 

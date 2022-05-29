@@ -1,4 +1,4 @@
-package server.utilities.entities.entitiesSentByServer;
+package utilities.entities.entitiesSentByServer;
 
 import java.util.ArrayList;
 import java.util.List;

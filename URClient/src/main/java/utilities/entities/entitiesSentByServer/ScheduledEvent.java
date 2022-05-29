@@ -1,4 +1,4 @@
-package server.utilities.entities.entitiesSentByServer;
+package utilities.entities.entitiesSentByServer;
 
 public class ScheduledEvent {
     private String nume;

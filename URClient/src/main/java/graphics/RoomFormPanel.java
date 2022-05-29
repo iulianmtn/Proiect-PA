@@ -3,14 +3,13 @@ package graphics;
 import example.ClientSocket;
 import model.Room;
 import utilities.*;
-import utilities.entities.entitiesSentByClient.GiveFaculties;
-import utilities.entities.entitiesSentByClient.GiveFacultySchedule;
-import utilities.entities.entitiesSentByClient.InsertFormat;
+import utilities.entities.entitiesSentByClient.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -125,15 +124,22 @@ public class RoomFormPanel extends JPanel {
 
     private void submitForm(ActionEvent event)
     {
+        PrintWriter out = ClientSocket.getInstance().getOutputStream();
         InsertFormat insertObject = new InsertFormat(frame.getAdminPanel().getFacultyName(), rooms, frame.getEventFormPanel().getEvents());
         /////-----With this I can get the rooms and events
-        ClientSocket.getInstance().getOutputStream().println(JsonSerialAndDeserial.formatToJson(insertObject));
+        out.println(JsonSerialAndDeserial.formatToJson(insertObject));
         //////----giveFaculties test
         GiveFaculties giveFaculties=new GiveFaculties();
-        ClientSocket.getInstance().getOutputStream().println(JsonSerialAndDeserial.formatToJson(giveFaculties));
+        out.println(JsonSerialAndDeserial.formatToJson(giveFaculties));
         /////----giveSchedule
         GiveFacultySchedule giveFacultySchedule = new GiveFacultySchedule(1);
-        ClientSocket.getInstance().getOutputStream().println(JsonSerialAndDeserial.formatToJson(giveFacultySchedule));
+        out.println(JsonSerialAndDeserial.formatToJson(giveFacultySchedule));
+        ////---giveGroupSchedule
+        GiveGroupSchedule giveGroupSchedule = new GiveGroupSchedule(1,1,"2B",1);
+        out.println(JsonSerialAndDeserial.formatToJson(giveGroupSchedule));
+        ////------giveGroups
+        GiveGroups giveGroups = new GiveGroups(1);
+        out.println(JsonSerialAndDeserial.formatToJson(giveGroups));
 
 
         CardLayout cardLayout = (CardLayout) frame.getContainer().getLayout();
