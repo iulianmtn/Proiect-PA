@@ -2,14 +2,15 @@ package graphics;
 
 import example.ClientSocket;
 import model.Room;
-import utilities.InsertFormat;
-import utilities.Utilities;
+import utilities.*;
+import utilities.entities.entitiesSentByClient.GiveFaculties;
+import utilities.entities.entitiesSentByClient.GiveFacultySchedule;
+import utilities.entities.entitiesSentByClient.InsertFormat;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.sql.ClientInfoStatus;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -124,8 +125,16 @@ public class RoomFormPanel extends JPanel {
 
     private void submitForm(ActionEvent event)
     {
-        InsertFormat insertObject = new InsertFormat("insert", frame.getAdminPanel().getFacultyName(), rooms, frame.getEventFormPanel().getEvents());
-        ClientSocket.getInstance().getOutputStream().println(Utilities.formatToJson(insertObject));
+        InsertFormat insertObject = new InsertFormat(frame.getAdminPanel().getFacultyName(), rooms, frame.getEventFormPanel().getEvents());
+        /////-----With this I can get the rooms and events
+        ClientSocket.getInstance().getOutputStream().println(JsonSerialAndDeserial.formatToJson(insertObject));
+        //////----giveFaculties test
+        GiveFaculties giveFaculties=new GiveFaculties();
+        ClientSocket.getInstance().getOutputStream().println(JsonSerialAndDeserial.formatToJson(giveFaculties));
+        /////----giveSchedule
+        GiveFacultySchedule giveFacultySchedule = new GiveFacultySchedule(1);
+        ClientSocket.getInstance().getOutputStream().println(JsonSerialAndDeserial.formatToJson(giveFacultySchedule));
+
 
         CardLayout cardLayout = (CardLayout) frame.getContainer().getLayout();
         cardLayout.show(frame.getContainer(), "main menu");

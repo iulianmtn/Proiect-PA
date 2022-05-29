@@ -1,7 +1,7 @@
 //import server.model.Event;
 //import server.model.Room;
 //import server.utilities.*;
-//import server.utilities.entities.InsertFormat;
+//import server.utilities.entities.entitiesSentByClient.InsertFormat;
 //
 //import java.util.ArrayList;
 //import java.util.List;

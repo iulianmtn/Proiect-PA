@@ -1,22 +1,22 @@
 package server.utilities;
 
+import com.google.gson.Gson;
 import server.model.Event;
 import server.model.Room;
-import server.utilities.entities.*;
+import server.utilities.entities.entitiesSentByClient.InsertFormat;
+import server.utilities.entities.entitiesSentByServer.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static server.utilities.entities.Colours.*;
+import static server.utilities.entities.helpers.Colours.*;
 
 /**
  * This class defines the interaction between the data base and the Server
  */
 public class DBController {
     private DBController(){}
-    ////here we will need the connection to a DB
-
-    /////-------------//////
+    private static Gson transformer = new Gson();
     /**
      * This function will introduce the new data(faculty,rooms,events) into the database but WON'T apply the GCA
      * @param jsonString the data into json format
@@ -46,89 +46,54 @@ public class DBController {
         System.out.println(ANSI_RESET+"----------------");
     }
 
-    /**
-     * @return all the faculties in a Json format from the server
-     */
-    public static String getFaculties(){
-        ////--->data base interogation
-        List<String> faculties = new ArrayList<>();
-        faculties.add("UAIC");
-        faculties.add("UBB");
-        faculties.add("UMF");
-        faculties.add("AC");
-        FacultyList listFaculties=new FacultyList(faculties);
-        ////show us the faculties
-        System.out.println(ANSI_PURPLE+listFaculties+ANSI_RESET+"\n------------");
 
-        return JsonSerialAndDeserial.formatToJson(listFaculties);
+    public static String getFaculties(){
+        ///statement to get faculties from where I will get the json for example the following
+
+        String givenJson = "[{\"nume\":\"info\"},{\"nume\":\"mate\"}]";
+
+        return givenJson;
     }
 
-    /**
-     *
-     * @param idFaculty
-     * @return  returns a json object that contains all the groups of a faculty under de Format 1B1 1B2 2B3..etc
-     */
     public static String getGroups(int idFaculty)
     {
-        /////---->we will get all the groupt from the dataBase that have the id = idFaculty
-        ///---get distinct Semian An grupa for the events and we get all the faculty members
-        ///Now for test
-        List<String> groupList = new ArrayList<>();
-        groupList.add("1B1");
-        groupList.add("1B2");
-        groupList.add("2B3");
-        groupList.add("2B4");
-
-        GroupList myGroupList=new GroupList(groupList);
-        System.out.println(ANSI_PURPLE+myGroupList+ANSI_RESET);
-
-        System.out.println("----------");
-        return JsonSerialAndDeserial.formatToJson(myGroupList);
+        //statement to get the faculties
+       return null;
     }
 
-    /**
-     *  This function gives the schedule of the hole faculty
-     * @param idFaculty
-     * @return
-     */
     public static String getFacultySchedule(int idFaculty){
-        //////----making the selection
-        //////
-        OneEventSchedule eventSchedule1 = new OneEventSchedule("c1","Fisics", DaysOfWeek.SATURDAY,2,10,1,1,"B",LabOrCourse.COURSE);
-        OneEventSchedule eventSchedule2 = new OneEventSchedule("c2","Romanian", DaysOfWeek.MONDAY,7,10,2,3,"A",LabOrCourse.COURSE);
-        List<OneEventSchedule> listScheduledEvents = new ArrayList<>();
-        listScheduledEvents.add(eventSchedule1);
-        listScheduledEvents.add(eventSchedule2);
-        FacultySchedule facultySchedule = new FacultySchedule(listScheduledEvents);
+        ////statement so we can get a schedule
+        List<ScheduledEvent> scheduledEventList = new ArrayList<>();
+        scheduledEventList.add(new ScheduledEvent("mate",8,10,30,"3B1","C1","curs"));
+        scheduledEventList.add(new ScheduledEvent("info",10,12,30,"2B2","C2","lab"));
+        ScheduledDay monday = new ScheduledDay("luni",scheduledEventList);
+        scheduledEventList.clear();
+        scheduledEventList.add(new ScheduledEvent("romana",10,12,30,"3B1","C2","lab"));
+        ScheduledDay tuesday = new ScheduledDay("marti",scheduledEventList);
+        List<ScheduledDay> schedule = new ArrayList<>();
+        schedule.add(monday);
+        schedule.add(tuesday);
 
-        System.out.println(ANSI_CYAN+"The schedule of the given faculty : "+ facultySchedule+ANSI_RESET);
-        System.out.println("------------");
-        return JsonSerialAndDeserial.formatToJson(facultySchedule);
+        String scheduledFaculty = transformer.toJson(schedule);
+        return scheduledFaculty;
+            }
 
-    }
-
-    /**
-     *  this function gives the schedule of a certain group of a faculty
-     * @param idFaculty
-     * @param group
-     * @param semian
-     * @param year
-     * @return
-     */
 
     public static String getGroupSchedule(int idFaculty,int group,String semian,int year)
-    {
-        ////---here we will make the interogation
-        /////
-        OneEventSchedule eventSchedule1 = new OneEventSchedule("c1","Fisics", DaysOfWeek.SATURDAY,2,10,2,3,"A",LabOrCourse.COURSE);
-        OneEventSchedule eventSchedule2 = new OneEventSchedule("c2","Romanian", DaysOfWeek.MONDAY,7,10,2,3,"A",LabOrCourse.COURSE);
-        List<OneEventSchedule> listScheduledEvents = new ArrayList<>();
-        listScheduledEvents.add(eventSchedule1);
-        listScheduledEvents.add(eventSchedule2);
-        GroupSchedule groupSchedule = new GroupSchedule(listScheduledEvents);
-        System.out.println(ANSI_GREEN+"The schedule of the given group : "+groupSchedule+ANSI_RESET);
-        System.out.println("------------");
-        return JsonSerialAndDeserial.formatToJson(groupSchedule);
+    { ////statement so we can get a schedule
+        List<ScheduledEvent> scheduledEventList = new ArrayList<>();
+        scheduledEventList.add(new ScheduledEvent("mate",8,10,30,"2B1","C1","curs"));
+        scheduledEventList.add(new ScheduledEvent("info",10,12,30,"2B1","C2","curs"));
+        ScheduledDay monday = new ScheduledDay("luni",scheduledEventList);
+        List<ScheduledEvent> scheduledEventList1=new ArrayList<>();
+        scheduledEventList1.add(new ScheduledEvent("romana",10,12,30,"2B1","P901","lab"));
+        ScheduledDay tuesday = new ScheduledDay("marti",scheduledEventList1);
+        List<ScheduledDay> schedule = new ArrayList<>();
+        schedule.add(monday);
+        schedule.add(tuesday);
+
+        String scheduledFaculty = transformer.toJson(schedule);
+        return scheduledFaculty;
     }
 
 

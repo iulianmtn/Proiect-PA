@@ -13,7 +13,7 @@ public class ClientSocket {
     private BufferedReader in;
 
     private static final String serverAddress = "127.0.0.1";
-    private static final int PORT = 5000;
+    private static final int PORT = 8001;
 
     private ClientSocket(){
         try {
