@@ -9,14 +9,6 @@ public class Room {
         this.capacity = capacity;
     }
 
-    @Override
-    public String toString() {
-        return "Room{" +
-                "name='" + name + '\'' +
-                ", capacity=" + capacity +
-                '}';
-    }
-
     public String getName() {
         return name;
     }
@@ -31,5 +23,19 @@ public class Room {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if(obj==null)
+            return false;
+        return this.hashCode()==obj.hashCode();
+
+    }
+    @Override
+    public String toString() {
+        return "Room{" +
+                "name='" + name + '\'' +
+                ", capacity=" + capacity +
+                '}';
     }
 }

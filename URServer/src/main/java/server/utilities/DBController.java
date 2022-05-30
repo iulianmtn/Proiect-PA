@@ -35,7 +35,13 @@ public class DBController {
         for(int indexRoom=0;indexRoom<numberRooms;++indexRoom)
         {
             System.out.println(ANSI_YELLOW+"We should insert the room : "+rooms.get(indexRoom));
-        }
+        }////here I should the id-s of the rooms
+        /**
+         * Here I can call the GCA with the given rooms ids
+         */
+
+
+
         ///the events
         List<Event> events=facultyObject.getEvents();
         int numberEvents=events.size();
