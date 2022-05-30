@@ -58,6 +58,7 @@ public class DBController {
         {
             int idCamera;
             System.out.println(ANSI_YELLOW+"We should insert the room : "+rooms.get(indexRoom));
+
             try {
                 CallableStatement callableStatement = connection.prepareCall("{? = call insert_camera(?, ?, ?)}");
                 callableStatement.registerOutParameter(1, Types.INTEGER);
