@@ -133,6 +133,7 @@ public class DBController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("ajungem aici: givenJson");
         return givenJson;
     }
 
@@ -154,8 +155,21 @@ public class DBController {
 
     public static String getGroupSchedule(int idFaculty,int group,String semian,int year)
     { ////statement so we can get a schedule
-        String jsonGroupSchedule;
-        return null;
+        String givenJson = null;
+        try {
+            CallableStatement callableStatement = connection.prepareCall("{ ? = call get_gr_ev(?, ?, ?, ?)}");
+            callableStatement.registerOutParameter(1, Types.VARCHAR);
+            callableStatement.setInt(2, idFaculty);
+            callableStatement.setInt(3,year);
+            callableStatement.setString(4,semian);
+            callableStatement.setInt(5, group);
+
+            callableStatement.executeUpdate();
+            givenJson = callableStatement.getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return givenJson;
     }
 
 
