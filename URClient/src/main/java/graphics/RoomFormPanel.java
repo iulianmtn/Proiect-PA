@@ -128,18 +128,6 @@ public class RoomFormPanel extends JPanel {
         InsertFormat insertObject = new InsertFormat(frame.getAdminPanel().getFacultyName(), rooms, frame.getEventFormPanel().getEvents());
         /////-----With this I can get the rooms and events
         out.println(JsonSerialAndDeserial.formatToJson(insertObject));
-        //////----giveFaculties test
-        GiveFaculties giveFaculties=new GiveFaculties();
-        out.println(JsonSerialAndDeserial.formatToJson(giveFaculties));
-        /////----giveSchedule
-        GiveFacultySchedule giveFacultySchedule = new GiveFacultySchedule(1);
-        out.println(JsonSerialAndDeserial.formatToJson(giveFacultySchedule));
-        ////---giveGroupSchedule
-        GiveGroupSchedule giveGroupSchedule = new GiveGroupSchedule(1,1,"2B",1);
-        out.println(JsonSerialAndDeserial.formatToJson(giveGroupSchedule));
-        ////------giveGroups
-        GiveGroups giveGroups = new GiveGroups(1);
-        out.println(JsonSerialAndDeserial.formatToJson(giveGroups));
 
 
         CardLayout cardLayout = (CardLayout) frame.getContainer().getLayout();

@@ -10,6 +10,10 @@ public class MainFrame extends JFrame {
     private StudentPanel studentPanel;
     private EventFormPanel eventFormPanel;
     private RoomFormPanel roomFormPanel;
+    private FacultyPanel facultyPanel;
+    private FacultySchedulePanel facultySchedulePanel;
+    private FacultyGroupsPanel facultyGroupsPanel;
+    private GroupSchedulePanel groupSchedulePanel;
 
 
     public MainFrame() {
@@ -30,12 +34,21 @@ public class MainFrame extends JFrame {
         studentPanel = new StudentPanel(this);
         eventFormPanel = new EventFormPanel(this);
         roomFormPanel = new RoomFormPanel(this);
+        facultyPanel = new FacultyPanel(this);
+        facultySchedulePanel = new FacultySchedulePanel(this);
+        facultyGroupsPanel = new FacultyGroupsPanel(this);
+        groupSchedulePanel = new GroupSchedulePanel(this);
 
         container.add(mainMenuPanel, "main menu");
         container.add(adminPanel, "admin");
         container.add(studentPanel, "student");
         container.add(eventFormPanel, "event form");
         container.add(roomFormPanel, "room form");
+        container.add(facultyPanel, "faculty");
+        container.add(facultySchedulePanel, "faculty schedule");
+        container.add(facultyGroupsPanel, "faculty groups");
+        container.add(groupSchedulePanel, "group schedule");
+
 
         //panelul de intrare
         //getContentPane().add(new MainMenuPanel(this));
@@ -59,5 +72,21 @@ public class MainFrame extends JFrame {
 
     public RoomFormPanel getRoomFormPanel() {
         return roomFormPanel;
+    }
+
+    public FacultyPanel getFacultyPanel() {
+        return facultyPanel;
+    }
+
+    public FacultySchedulePanel getFacultySchedulePanel() {
+        return facultySchedulePanel;
+    }
+
+    public FacultyGroupsPanel getFacultyGroupsPanel() {
+        return facultyGroupsPanel;
+    }
+
+    public GroupSchedulePanel getGroupSchedulePanel() {
+        return groupSchedulePanel;
     }
 }

@@ -7,11 +7,11 @@ public class Event {
     private int size;
     private String day;
     private String type;
-    private String year;
+    private int year;
     private String semian;
-    private String group;
+    private int group;
 
-    public Event(String name, int start, int end,int size, String day, String type, String year, String semian, String group) {
+    public Event(String name, int start, int end,int size, String day, String type, int year, String semian, int group) {
         this.name = name;
         this.start = start;
         this.end = end;
@@ -55,8 +55,10 @@ public class Event {
         this.day = day;
     }
 
-    public String getType() {
-        return type;
+    public int getType() {
+        if(type.equals("course"))
+            return 0;
+        else return 1;
     }
 
     public void setType(String type) {
@@ -71,19 +73,19 @@ public class Event {
         this.semian = semian;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public String getGroup() {
+    public int getGroup() {
         return group;
     }
 
-    public void setGroup(String group) {
+    public void setGroup(int group) {
         this.group = group;
     }
 
