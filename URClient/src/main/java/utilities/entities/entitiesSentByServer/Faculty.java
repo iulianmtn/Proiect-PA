@@ -1,10 +1,10 @@
 package utilities.entities.entitiesSentByServer;
 
-public class FacultyName {
+public class Faculty {
     private String nume;
     private int id;
 
-    public FacultyName(String nume, int id) {
+    public Faculty(String nume, int id) {
         this.nume = nume;
         this.id = id;
     }
@@ -27,7 +27,7 @@ public class FacultyName {
 
     @Override
     public String toString() {
-        return "FacultyName{" +
+        return "Faculty{" +
                 "nume='" + nume + '\'' +
                 ", id=" + id +
                 '}';

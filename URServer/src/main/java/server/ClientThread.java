@@ -44,7 +44,8 @@ public class ClientThread extends Thread{
                     case "giveFaculties" :
                             System.out.println("Somebody wants the faculties");
                         String jsonFaculties = DBController.getFaculties();
-                        //out.println(jsonFaculties);
+                        out.println(jsonFaculties);
+                        out.flush();
 
                             break;
                     case "giveGroups" :

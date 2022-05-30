@@ -1,12 +1,6 @@
 package example;
 
-import example.ClientSocket;
 import graphics.MainFrame;
-import utilities.JsonSerialAndDeserial;
-import utilities.entities.entitiesSentByServer.FacultyName;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
