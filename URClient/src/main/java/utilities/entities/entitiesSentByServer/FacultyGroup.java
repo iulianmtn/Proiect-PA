@@ -1,24 +1,24 @@
 package utilities.entities.entitiesSentByServer;
 
 public class FacultyGroup {
-    private String group;
+    private String grupa;
 
     public FacultyGroup(String group) {
-        this.group = group;
+        this.grupa = group;
     }
 
-    public String getGroup() {
-        return group;
+    public String getGrupa() {
+        return grupa;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setGrupa(String grupa) {
+        this.grupa = grupa;
     }
 
     @Override
     public String toString() {
         return "FacultyGroup{" +
-                "group='" + group + '\'' +
+                "group='" + grupa + '\'' +
                 '}';
     }
 }

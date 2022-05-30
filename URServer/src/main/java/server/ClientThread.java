@@ -51,19 +51,22 @@ public class ClientThread extends Thread{
                     case "giveGroups" :
                         System.out.println("I want the groups");
                         String jsonGroups = DBController.getGroups(1);
-                        System.out.println(jsonGroups);
+                        out.println(jsonGroups);
+                        out.flush();
                             break;
                     case "giveFacultySchedule" :
                         System.out.println("I want the Faculty Schedule");
                         String facultySchedule = DBController.getFacultySchedule(1);
-                        System.out.println(facultySchedule);
+                        out.println(facultySchedule);
+                        out.flush();
 //                        Type listType = new TypeToken<ArrayList<ScheduledDay>>(){}.getType();
 //                        List<ScheduledDay> yourClassList = new Gson().fromJson(facultySchedule, listType);
                             break;
                     case "giveGroupSchedule" :
                         System.out.println("I want a group's Schedule");
                         String groupSchedule = DBController.getGroupSchedule(1,1,"B",1);
-                        System.out.println(groupSchedule);
+                        out.println(groupSchedule);
+                        out.flush();
                             break;
                     default : System.out.println("Something went wrong:(");
                 }
