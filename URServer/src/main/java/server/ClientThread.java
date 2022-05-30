@@ -4,8 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import server.utilities.DBController;
 import server.utilities.JsonSerialAndDeserial;
-import server.utilities.entities.entitiesSentByClient.GiveFaculties;
-import server.utilities.entities.entitiesSentByClient.Instruction;
+import server.utilities.entities.entitiesSentByClient.*;
 import server.utilities.entities.entitiesSentByServer.FacultyName;
 import server.utilities.entities.entitiesSentByServer.ScheduledDay;
 
@@ -50,13 +49,15 @@ public class ClientThread extends Thread{
                             break;
                     case "giveGroups" :
                         System.out.println("I want the groups");
-                        String jsonGroups = DBController.getGroups(1);
+                        GiveGroups giveGroups = (GiveGroups) instruction;
+                        String jsonGroups = DBController.getGroups(giveGroups.getId_faculty());
                         out.println(jsonGroups);
                         out.flush();
                             break;
                     case "giveFacultySchedule" :
                         System.out.println("I want the Faculty Schedule");
-                        String facultySchedule = DBController.getFacultySchedule(1);
+                        GiveFacultySchedule giveFacultySchedule = (GiveFacultySchedule) instruction;
+                        String facultySchedule = DBController.getFacultySchedule(giveFacultySchedule.getId_faculty());
                         out.println(facultySchedule);
                         out.flush();
 //                        Type listType = new TypeToken<ArrayList<ScheduledDay>>(){}.getType();
@@ -64,7 +65,11 @@ public class ClientThread extends Thread{
                             break;
                     case "giveGroupSchedule" :
                         System.out.println("I want a group's Schedule");
-                        String groupSchedule = DBController.getGroupSchedule(1,1,"B",1);
+                        GiveGroupSchedule giveGroupSchedule = (GiveGroupSchedule) instruction;
+                        String groupSchedule = DBController.getGroupSchedule(giveGroupSchedule.getId_faculty(),
+                                                                            giveGroupSchedule.getGroup(),
+                                                                            giveGroupSchedule.getSemian(),
+                                                                            giveGroupSchedule.getYear());
                         out.println(groupSchedule);
                         out.flush();
                             break;

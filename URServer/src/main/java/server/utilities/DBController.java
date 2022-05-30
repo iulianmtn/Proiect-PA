@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import server.Database;
 import server.model.Event;
 import server.model.Room;
+import server.utilities.DSaturAlgorithm.DSatur;
 import server.utilities.entities.entitiesSentByClient.InsertFormat;
 import server.utilities.entities.entitiesSentByServer.*;
 
@@ -12,7 +13,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static server.utilities.entities.helpers.Colours.*;
 
@@ -30,6 +33,7 @@ public class DBController {
      */
     public static void  InsertNewFaculty(String jsonString){
         int idFacutate = 0;
+        Map<Room, Integer> idRooms = new HashMap<>();
 
         InsertFormat facultyObject = (InsertFormat) JsonSerialAndDeserial.formatToObject(jsonString);
         System.out.println(facultyObject);
@@ -67,12 +71,17 @@ public class DBController {
                 callableStatement.setString(4, rooms.get(indexRoom).getName());
                 callableStatement.executeUpdate();
                 idCamera = callableStatement.getInt(1);
+                idRooms.put(rooms.get(indexRoom), idCamera);
+
                 connection.commit();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
         }
+
+        Map<Event, Integer> distribution = DSatur.makeSchedule(facultyObject.getRooms(), facultyObject.getEvents(), idRooms);
+
         ///the events
         List<Event> events=facultyObject.getEvents();
         int numberEvents=events.size();
@@ -81,7 +90,7 @@ public class DBController {
             System.out.println(ANSI_BLUE+"We should insert the event : "+events.get(indexEvent));
 
             try {
-                CallableStatement callableStatement = connection.prepareCall("insert into events (id_facultate, nume, zi, inceput, sfarsit, an, grupa, semian, tip, dimensiune) values (?,?,?,?,?,?,?,?,?,?)");
+                CallableStatement callableStatement = connection.prepareCall("insert into events (id_facultate, nume, zi, inceput, sfarsit, an, grupa, semian, tip, dimensiune, id_camera) values (?,?,?,?,?,?,?,?,?,?,?)");
                 callableStatement.setInt(1, idFacutate);
                 callableStatement.setString(2,events.get(indexEvent).getName());
                 callableStatement.setString(3,events.get(indexEvent).getDay());
@@ -92,6 +101,7 @@ public class DBController {
                 callableStatement.setString(8,events.get(indexEvent).getSemian());
                 callableStatement.setInt(9,events.get(indexEvent).getType());
                 callableStatement.setInt(10,events.get(indexEvent).getSize());
+                callableStatement.setInt(11, distribution.get(events.get(indexEvent)));
                 callableStatement.execute();
                 connection.commit();
 
@@ -134,7 +144,6 @@ public class DBController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("ajungem aici: givenJson");
         return givenJson;
     }
 
@@ -172,7 +181,4 @@ public class DBController {
         }
         return givenJson;
     }
-
-
-
 }
