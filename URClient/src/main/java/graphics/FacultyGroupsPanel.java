@@ -25,7 +25,6 @@ public class FacultyGroupsPanel extends JPanel {
     private JScrollPane groupContainer;
     private JPanel groupButtons;
     private List<FacultyGroup> groupList;
-    private int selectedGroupId;
 
     public FacultyGroupsPanel(MainFrame frame) {
         this.frame = frame;
@@ -75,6 +74,13 @@ public class FacultyGroupsPanel extends JPanel {
 
         CardLayout cardLayout = (CardLayout) frame.getContainer().getLayout();
         cardLayout.show(frame.getContainer(), "faculty schedule");
+    }
 
+    public JScrollPane getGroupContainer() {
+        return groupContainer;
+    }
+
+    public void setGroupContainer(JScrollPane groupContainer) {
+        this.groupContainer = groupContainer;
     }
 }

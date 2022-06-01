@@ -89,4 +89,8 @@ public class MainFrame extends JFrame {
     public GroupSchedulePanel getGroupSchedulePanel() {
         return groupSchedulePanel;
     }
+
+    public void setFacultyGroupsPanel(FacultyGroupsPanel panel) {
+        facultyGroupsPanel = panel;
+    }
 }

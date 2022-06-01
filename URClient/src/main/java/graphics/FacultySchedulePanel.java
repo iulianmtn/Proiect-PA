@@ -5,6 +5,8 @@ import utilities.entities.entitiesSentByServer.ScheduledEvent;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,17 +17,54 @@ public class FacultySchedulePanel extends JPanel {
     private JPanel tables;
     private JScrollPane scrollableContainer;
 
+    private JButton backButton;
 
 
     public FacultySchedulePanel(MainFrame frame) {
         this.frame = frame;
 
         title = new JLabel("orar facultate");
-
         tables = new JPanel();
+
+        backButton = new JButton("Back");
+
+        init();
+
+    }
+
+    private void init() {
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         add(title);
         add(tables);
+
+
+        backButton = new JButton("Back");
+        backButton.setLocation(50,50);
+        backButton.addActionListener(this::goBack);
+
+        add(backButton);
+    }
+
+    private void goBack(ActionEvent event) {
+        remove(tables);
+        tables = new JPanel();
+        add(tables);
+
+        remove(scrollableContainer);
+        scrollableContainer = new JScrollPane(tables);
+        add(scrollableContainer);
+
+        frame.getFacultyGroupsPanel().remove(frame.getFacultyGroupsPanel().getGroupContainer());
+        frame.getFacultyGroupsPanel().setGroupContainer(new JScrollPane());
+        frame.add(frame.getFacultyGroupsPanel().getGroupContainer());
+        frame.getFacultyGroupsPanel().revalidate();
+
+        revalidate();
+
+        CardLayout cardLayout = (CardLayout) frame.getContainer().getLayout();
+        cardLayout.show(frame.getContainer(), "student");
+
     }
 
     public void paintTables(List<ScheduledDay> schedule)
@@ -58,8 +97,12 @@ public class FacultySchedulePanel extends JPanel {
                 DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
                 tableModel.addRow(cells);
             }
+            JPanel tableContainer = new JPanel();
+            tableContainer.setLayout(new BorderLayout());
+            tableContainer.add(table, BorderLayout.CENTER);
+            tableContainer.add(table.getTableHeader(), BorderLayout.NORTH);
 
-            tables.add(table);
+            tables.add(tableContainer);
         }
         scrollableContainer = new JScrollPane(tables);
         add(scrollableContainer);

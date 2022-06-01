@@ -90,6 +90,7 @@ public class DBController {
             System.out.println(ANSI_BLUE+"We should insert the event : "+events.get(indexEvent));
 
             try {
+
                 CallableStatement callableStatement = connection.prepareCall("insert into events (id_facultate, nume, zi, inceput, sfarsit, an, grupa, semian, tip, dimensiune, id_camera) values (?,?,?,?,?,?,?,?,?,?,?)");
                 callableStatement.setInt(1, idFacutate);
                 callableStatement.setString(2,events.get(indexEvent).getName());
@@ -97,7 +98,7 @@ public class DBController {
                 callableStatement.setInt(4,events.get(indexEvent).getStart());
                 callableStatement.setInt(5,events.get(indexEvent).getEnd());
                 callableStatement.setInt(6,events.get(indexEvent).getYear());
-                callableStatement.setInt(7,events.get(indexEvent).getGroup());
+                callableStatement.setInt(7, events.get(indexEvent).getGroup());
                 callableStatement.setString(8,events.get(indexEvent).getSemian());
                 callableStatement.setInt(9,events.get(indexEvent).getType());
                 callableStatement.setInt(10,events.get(indexEvent).getSize());

@@ -81,6 +81,7 @@ public class FacultyPanel extends JPanel {
 
             Type listType = new TypeToken<ArrayList<ScheduledDay>>(){}.getType();
             List<ScheduledDay> schedule = new Gson().fromJson(jsonSchedule, listType);
+            System.out.println(jsonSchedule);
 
             frame.getFacultySchedulePanel().paintTables(schedule);
         } catch (IOException e) {
