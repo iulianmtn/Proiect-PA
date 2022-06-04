@@ -2,10 +2,10 @@ package server.utilities.entities.entitiesSentByClient;
 
 public class GiveFacultySchedule implements Instruction{
     private String instruction="giveFacultySchedule";
-    private int id_faculty;
+    private int idFaculty;
 
     public GiveFacultySchedule(int id_faculty) {
-        this.id_faculty = id_faculty;
+        this.idFaculty = id_faculty;
     }
 
     public String getInstruction() {
@@ -16,12 +16,12 @@ public class GiveFacultySchedule implements Instruction{
         this.instruction = instruction;
     }
 
-    public int getId_faculty() {
-        return id_faculty;
+    public int getIdFaculty() {
+        return idFaculty;
     }
 
-    public void setId_faculty(int id_faculty) {
-        this.id_faculty = id_faculty;
+    public void setIdFaculty(int idFaculty) {
+        this.idFaculty = idFaculty;
     }
 
 }

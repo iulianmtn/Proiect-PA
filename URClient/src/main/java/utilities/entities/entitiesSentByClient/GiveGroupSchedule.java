@@ -2,13 +2,13 @@ package utilities.entities.entitiesSentByClient;
 
 public class GiveGroupSchedule implements Instruction{
     private String instruction = "giveGroupSchedule";
-    private int id_faculty;
+    private int idFaculty;
     private int year;
     private String semian;
     private int group;
 
-    public GiveGroupSchedule(int id_faculty, int year, String semian, int group) {
-        this.id_faculty = id_faculty;
+    public GiveGroupSchedule(int idFaculty, int year, String semian, int group) {
+        this.idFaculty = idFaculty;
         this.year = year;
         this.semian = semian;
         this.group = group;
@@ -22,12 +22,12 @@ public class GiveGroupSchedule implements Instruction{
         this.instruction = instruction;
     }
 
-    public int getId_faculty() {
-        return id_faculty;
+    public int getIdFaculty() {
+        return idFaculty;
     }
 
-    public void setId_faculty(int id_faculty) {
-        this.id_faculty = id_faculty;
+    public void setIdFaculty(int idFaculty) {
+        this.idFaculty = idFaculty;
     }
 
     public int getYear() {
