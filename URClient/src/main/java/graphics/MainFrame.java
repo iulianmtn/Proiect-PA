@@ -93,4 +93,8 @@ public class MainFrame extends JFrame {
     public void setFacultyGroupsPanel(FacultyGroupsPanel panel) {
         facultyGroupsPanel = panel;
     }
+
+    public void setFacultySchedulePanel(FacultySchedulePanel facultySchedulePanel) {
+        this.facultySchedulePanel = facultySchedulePanel;
+    }
 }

@@ -55,10 +55,14 @@ public class FacultySchedulePanel extends JPanel {
         scrollableContainer = new JScrollPane(tables);
         add(scrollableContainer);
 
-        frame.getFacultyGroupsPanel().remove(frame.getFacultyGroupsPanel().getGroupContainer());
-        frame.getFacultyGroupsPanel().setGroupContainer(new JScrollPane());
-        frame.add(frame.getFacultyGroupsPanel().getGroupContainer());
-        frame.getFacultyGroupsPanel().revalidate();
+        //il stergem si redesenam din nou panelul
+        frame.getContainer().remove(frame.getFacultySchedulePanel());
+        frame.setFacultySchedulePanel(new FacultySchedulePanel(frame));
+        frame.getContainer().add(frame.getFacultySchedulePanel(), "faculty schedule");
+
+        frame.getContainer().remove(frame.getFacultyGroupsPanel());
+        frame.setFacultyGroupsPanel(new FacultyGroupsPanel(frame));
+        frame.getContainer().add(frame.getFacultyGroupsPanel(), "faculty groups");
 
         revalidate();
 
