@@ -1,40 +1,3 @@
-create or replace package cam_pack is
-    --function insert_camera (p_id_fac facultati.id%type, p_capacitate camere.capacitate%type, p_nume camere.nume%type) return int;
-    function get_camere_facultate (p_id_fac camere.id_facultate%type) return varchar2;
-end;
-
-create or replace package body cam_pack is
-    
-    function get_camere_facultate (p_id_fac camere.id_facultate%type) return varchar2 is
-        v_lista varchar2(2000);
-        cursor lista_camere is select nume, capacitate from camere where id_facultate = p_id_fac;
-    begin
-        v_lista := '[';
-        for v_cam in lista_camere loop
-            v_lista := v_lista || '{\"nume\":\"' || v_cam.nume || '\", \"capacitate\":\"' || v_cam.capacitate || '\"},';
-        end loop;
-        v_lista := substr(v_lista, 0, length(v_lista) -1);
-        v_lista := v_lista || ']';
-        
-    end;
-
-end;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -74,22 +37,3 @@ begin
             return 'n/a';
 end find_cam_by_id;
 
-
-begin
-    dbms_output.put_line(find_cam_by_id(2));
-end;
-    
-    
-    
-
-    
-    
-    
-    insert into camere (id_facultate, capacitate, nume) values (13, 30, 'L1');
-
-
-
-
-begin
-    dbms_output.put_line(get_camere_facultate(13));
-end;

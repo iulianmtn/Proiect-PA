@@ -95,27 +95,3 @@ begin
 end;
 
     
-
-
-set serveroutput on;
-
-begin
- dbms_output.put_line(get_gr_ev(27,1, 'B', 1));
- --dbms_output.put_line(get_fac_ev(27));
-
-end;
-
-
-
-select nume from events order by decode(zi, 'luni', 1, 'marti', 2, 3) desc;
-
-insert into events (id_facultate, nume, zi, inceput, sfarsit, an, grupa, semian, tip, dimensiune) values ('22', 'ww1', 'joi', 8, 10, 2, 2, 'A', 0, 30);
-
-
-select * from events;
-
-
-desc events;
-delete from facultati;
-
-
