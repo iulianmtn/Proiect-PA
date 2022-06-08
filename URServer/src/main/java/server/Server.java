@@ -25,12 +25,10 @@ public class Server {
 
                 ClientThread clientThread = new ClientThread(socket);
                 clientThread.start();
-                clientThread.join();
+                //clientThread.join();
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

@@ -26,6 +26,7 @@ public class DBController {
     static {
         try {
             connection = DataSource.getConnection();
+            connection.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
         }
