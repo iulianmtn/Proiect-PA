@@ -1,18 +1,16 @@
 package server.utilities;
 
 import com.google.gson.Gson;
-import server.Database;
+import server.DataSource;
 import server.model.Event;
 import server.model.Room;
 import server.utilities.DSaturAlgorithm.DSatur;
 import server.utilities.entities.entitiesSentByClient.InsertFormat;
-import server.utilities.entities.entitiesSentByServer.*;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +21,15 @@ import static server.utilities.entities.helpers.Colours.*;
  * This class defines the interaction between the data base and the Server
  */
 public class DBController {
-    private static Connection connection = Database.getConnection();
+    private static Connection connection;
+
+    static {
+        try {
+            connection = DataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     private DBController(){}
     private static Gson transformer = new Gson();
